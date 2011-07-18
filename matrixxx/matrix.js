@@ -1,4 +1,3 @@
-/*
 window.addEvent('domready', function() {
 	new Request.HTML({
 		url: '/gh/get/response.html/zalun/jsFiddleGithubDemo/tree/master/Demo/',
@@ -10,6 +9,3 @@ window.addEvent('domready', function() {
 		}
 	}).send();
 })
-
-*/
-
