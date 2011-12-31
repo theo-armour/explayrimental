@@ -4,16 +4,20 @@
 <meta http-equiv="content-type" content="text/html; charset=windows-1250">
 <title>matrix text effect</title>
 <style type="text/css">
-/* .matrix { font-family:Lucida Console, Courier, Monotype; font-size:10pt; text-align:center; width:10px; padding:0px; margin:0px;} */
-.matrix { font-family:Monospace; font-size:40px; text-align:center; width:40px; padding:0px; margin:0px;}
-body {background: #000;}
+/* .matrix { font-family:Lucida Console, Courier, Monotype; font-size:10pt; text-align:center; width:10px; padding:0px; margin:0px;}    
+.matrix { font-family:Monospace; font-size:40px; text-align:center; width:40px; padding:0px; margin:0px;} */ 
+        
+body {background: #000; text-align: center;}
 </style>
 </head>
 <body>
-
+<!--
 <div id="matrix">Hello World!</div>
+-->
 
 <script type="text/javascript" language="JavaScript">
+// http://tinyurl.com/448k22y 
+
 var rows=11; // must be an odd number
 var speed=50; // lower is faster
 var reveal=2; // between 0 and 2 only. The higher, the faster the word appears
@@ -38,7 +42,24 @@ var m_copo=new Array();
 
 //window.onload=function() {
 function drawMatrix() {
-	if (!w3c && !ie45) return
+var str = 'Happy Birthday Wonderful Cynthia - Love Daddy';
+var len = str.length;
+
+matrx = document.createElement('div');
+matrx.id = 'matrix';
+
+matrx.style.fontFamily = "Monospace";
+matrx.style.fontSize = wd / len + 'px'; // '60px';
+
+// matrx.style.width = matrx.style.fontSize; // '60px'; 
+matrx.style.padding = '0px';
+matrx.style.margin = '0px auto 0px auto';
+matrx.style.textAlign = 'center';
+
+matrx.innerHTML = str;
+document.body.appendChild(matrx);
+
+if (!w3c && !ie45) return
   var matrix=(w3c)?document.getElementById("matrix"):document.all["matrix"];
   ma_txt=(w3c)?matrix.firstChild.nodeValue:matrix.innerHTML;
   ma_txt=" "+ma_txt+" ";
@@ -54,11 +75,11 @@ function drawMatrix() {
     for (x=0; x<rows; x++) {
       ma_row=document.createElement("tr");
       for (y=0; y<columns; y++) {
-matemp=document.createElement("td");
-matemp.setAttribute("id", "Mx"+x+"y"+y);
-matemp.className="matrix";
-matemp.appendChild(document.createTextNode(String.fromCharCode(160)));
-ma_row.appendChild(matemp);
+        matemp=document.createElement("td");
+        matemp.setAttribute("id", "Mx"+x+"y"+y);
+        matemp.className="matrix";
+        matemp.appendChild(document.createTextNode(String.fromCharCode(160)));
+        ma_row.appendChild(matemp);
       }
       ma_bod.appendChild(ma_row);
     }

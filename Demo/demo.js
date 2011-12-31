@@ -1,23 +1,22 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=windows-1250">
-<title>matrix text effect</title>
-<style type="text/css">
-/* .matrix { font-family:Lucida Console, Courier, Monotype; font-size:10pt; text-align:center; width:10px; padding:0px; margin:0px;} */
-.matrix { font-family:Monospace; font-size:40px; text-align:center; width:40px; padding:0px; margin:0px;}
-body {background: #000;}
-</style>
-</head>
-<body>
+/*
+window.addEvent('domready', function() {
+	new Request.HTML({
+		url: '/gh/get/response.html/zalun/jsFiddleGithubDemo/tree/master/Demo/',
+		data: {'delay': 1},
+		method: 'post',
+		update: 'demo',
+		onSuccess: function(response) {
+			$('demo').highlight();
+		}
+	}).send();
+})
 
-<div id="matrix">Hello World!</div>
+*/
 
-<script type="text/javascript" language="JavaScript">
 var rows=11; // must be an odd number
 var speed=50; // lower is faster
 var reveal=2; // between 0 and 2 only. The higher, the faster the word appears
-var effectalign="center" //enter "center" to center it.   or "dafault"
+var effectalign="default" //enter "center" to center it.
 
 /***********************************************
  *http://www.dynamicdrive.com/dynamicindex10/matrixeffect.htm 
@@ -26,18 +25,12 @@ var effectalign="center" //enter "center" to center it.   or "dafault"
 * Visit http://www.dynamicdrive.com/ for full source code
 ***********************************************/
 
-var wd = window.innerWidth;
-var ht = window.innerHeight;
-
-
 var w3c=document.getElementById && !window.opera;;
 var ie45=document.all && !window.opera;
 var ma_tab, matemp, ma_bod, ma_row, x, y, columns, ma_txt, ma_cho;
 var m_coch=new Array();
 var m_copo=new Array();
-
-//window.onload=function() {
-function drawMatrix() {
+window.onload=function() {
 	if (!w3c && !ie45) return
   var matrix=(w3c)?document.getElementById("matrix"):document.all["matrix"];
   ma_txt=(w3c)?matrix.firstChild.nodeValue:matrix.innerHTML;
@@ -48,17 +41,17 @@ function drawMatrix() {
     ma_tab=document.createElement("table");
     ma_tab.setAttribute("border", 0);
     ma_tab.setAttribute("align", effectalign);
-    ma_tab.style.backgroundColor="#000000";
-    //ma_tab.style.backgroundColor="#888";
+    //ma_tab.style.backgroundColor="#000000";
+    ma_tab.style.backgroundColor="#888";
     ma_bod=document.createElement("tbody");
     for (x=0; x<rows; x++) {
       ma_row=document.createElement("tr");
       for (y=0; y<columns; y++) {
-matemp=document.createElement("td");
-matemp.setAttribute("id", "Mx"+x+"y"+y);
-matemp.className="matrix";
-matemp.appendChild(document.createTextNode(String.fromCharCode(160)));
-ma_row.appendChild(matemp);
+        matemp=document.createElement("td");
+        matemp.setAttribute("id", "Mx"+x+"y"+y);
+        matemp.className="matrix";
+        matemp.appendChild(document.createTextNode(String.fromCharCode(160)));
+        ma_row.appendChild(matemp);
       }
       ma_bod.appendChild(ma_row);
     }
@@ -177,10 +170,3 @@ function zoomer(ycol) {
     setTimeout("zoomer("+ycol+")", speed);
   }
 }
-
-drawMatrix();
-
-</script>
-
-</body>
-</html>
