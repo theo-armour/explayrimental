@@ -1,18 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-  <head>
-  <meta http-equiv="content-type" content="text/html; charset=windows-1250">
-  <meta name="generator" content="PSPad editor, www.pspad.com">
-  <title></title>
-  <style type="text/css">
-  /* .matrix { font-family:Lucida Console, Courier, Monotype; font-size:10pt; text-align:center; width:10px; padding:0px; margin:0px;} */
-  
-.matrix { font-family:Monospace; font-size:40px; text-align:center; width:40px; padding:0px; margin:0px;}
-</style>
-
-<script type="text/javascript" language="JavaScript">
-
-<!--
 var rows=11; // must be an odd number
 var speed=50; // lower is faster
 var reveal=2; // between 0 and 2 only. The higher, the faster the word appears
@@ -170,10 +155,3 @@ function zoomer(ycol) {
     setTimeout("zoomer("+ycol+")", speed);
   }
 }
-// -->
-</script>
-  </head>
-  <body>
-<div id="matrix">Hello World! More...</div>
-  </body>
-</html>

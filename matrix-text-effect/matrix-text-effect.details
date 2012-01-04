@@ -1,0 +1,13 @@
+/*
+---
+name: matrix-text-effects.html - jsFiddle/Github integration demo
+description: jsFiddle demo hosted on Github using HTML Request to do fun stuff with a text string
+authors:
+  - Theo Armour
+resources:
+  - none
+normalize_css: no  
+...
+*/
+
+<p>This demo will show you how to create a Matrix-like text effect</p> 
