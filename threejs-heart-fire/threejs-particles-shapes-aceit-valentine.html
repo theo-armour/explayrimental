@@ -17,25 +17,22 @@
 	<body>
 
 
-		<script src="../build/Three.js"></script>
+		<script src="https://raw.github.com/mrdoob/three.js/r47/build/Three.js"></script>
+		
+		<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/Stats.js"></script>
+		<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/Tween.js"></script>
+		<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/Sparks.js"></script>
 
-		<script src="../js/RequestAnimationFrame.js"></script>
-		<script src="../js/Stats.js"></script>
-		<script src="../js/Tween.js"></script>
-		<script src="../js/Sparks.js"></script>
-
-		<script src="../js/ShaderExtras.js"></script>
-		<script src="../js/postprocessing/EffectComposer.js"></script>
-		<script src="../js/postprocessing/RenderPass.js"></script>
-		<script src="../js/postprocessing/ShaderPass.js"></script>
-		<script src="../js/postprocessing/MaskPass.js"></script>
-		<script src="../js/postprocessing/BloomPass.js"></script>
-		<script src="../js/postprocessing/FilmPass.js"></script>
+		<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/ShaderExtras.js"></script>
+		<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/postprocessing/EffectComposer.js"></script>
+		<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/postprocessing/RenderPass.js"></script>
+		<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/postprocessing/ShaderPass.js"></script>
+		<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/postprocessing/MaskPass.js"></script>
+		<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/postprocessing/BloomPass.js"></script>
+		<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/postprocessing/FilmPass.js"></script>
 
 		<!-- load the font file from canvas-text -->
-
-
-		<script src="../fonts/helvetiker_regular.typeface.js"></script>
+		<script src="https://raw.github.com/mrdoob/three.js/r47/examples//fonts/helvetiker_regular.typeface.js"></script>
 
 			<script type="x-shader/x-vertex" id="vertexshader">
 
@@ -125,6 +122,7 @@
 				// SCENE
 
 				scene = new THREE.Scene();
+				scene.add(camera);
 
 				var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
 				directionalLight.position.set( 0, -1, 1 );
