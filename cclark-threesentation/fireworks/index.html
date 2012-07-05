@@ -32,20 +32,20 @@
 	
 	
 -->		                                                                                                                  
-<script src="../../three.js/build/Three.js"></script>
-<script src="../../three.js/examples/js/Detector.js"></script>
-<script src="../../three.js/examples/js/Stats.js"></script>
-<script src="../../three.js/examples/fonts/helvetiker_regular.typeface.js"></script>
+<script src="../../../three.js/build/Three.js"></script>
+<script src="../../../three.js/examples/js/Detector.js"></script>
+<script src="../../../three.js/examples/js/Stats.js"></script>
+<script src="../../../three.js/examples/fonts/helvetiker_regular.typeface.js"></script>
 
-<script src="../../three.js/examples/js/Tween.js"></script>
-<script src="../../three.js/examples//js/Sparks.js"></script>
-<script src="../../three.js/examples//js/ShaderExtras.js"></script>
-<script src="../../three.js/examples//js/postprocessing/EffectComposer.js"></script>
-<script src="../../three.js/examples//js/postprocessing/RenderPass.js"></script>
-<script src="../../three.js/examples//js/postprocessing/ShaderPass.js"></script>
-<script src="../../three.js/examples//js/postprocessing/MaskPass.js"></script>
-<script src="../../three.js/examples//js/postprocessing/BloomPass.js"></script>
-<script src="../../three.js/examples//js/postprocessing/FilmPass.js"></script> 
+<script src="../../../three.js/examples/js/Tween.js"></script>
+<script src="../../../three.js/examples//js/Sparks.js"></script>
+<script src="../../../three.js/examples//js/ShaderExtras.js"></script>
+<script src="../../../three.js/examples//js/postprocessing/EffectComposer.js"></script>
+<script src="../../../three.js/examples//js/postprocessing/RenderPass.js"></script>
+<script src="../../../three.js/examples//js/postprocessing/ShaderPass.js"></script>
+<script src="../../../three.js/examples//js/postprocessing/MaskPass.js"></script>
+<script src="../../../three.js/examples//js/postprocessing/BloomPass.js"></script>
+<script src="../../../three.js/examples//js/postprocessing/FilmPass.js"></script> 
 
 <script type="x-shader/x-vertex" id="vertexshader">
 	attribute float size;
@@ -164,7 +164,8 @@
 				var particlesLength = 70000;
 				var particles = new THREE.Geometry();
 				function newpos( x, y, z ) {
-					return new THREE.Vertex( new THREE.Vector3( x, y, z ) );
+					// return new THREE.Vertex( new THREE.Vector3( x, y, z ) );
+					return new THREE.Vector3( x, y, z );
 				}
 
 				var Pool = {

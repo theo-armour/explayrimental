@@ -6,18 +6,19 @@
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 <!-- 
 Theo Armour 2012-03-13
-Thanks to Mr.Doob ~ Altered Qualia ~ Ethan Luo ~ jerome Etienne
+Thanks to Mr.Doob ~ Altered Qualia ~ Ethan Luo ~ Jerome Etienne
 -->
 </head>
 <body>
-<!--
+
 <script src="http://mrdoob.github.com/three.js/build/Three.js"></script>
 <script src="http://mrdoob.github.com/three.js/examples/js/Stats.js"></script>
 <script src="http://mrdoob.github.com/three.js/examples/js/Detector.js"></script>
+<!--
+<script src="../../../three.js/build/Three.js"></script>
+<script src="../../../three.js/examples/js/Detector.js"></script>
+<script src="../../../three.js/examples/js/Stats.js"></script>
 -->
-<script src="../../three.js/build/Three.js"></script>
-<script src="../../three.js/examples/js/Detector.js"></script>
-<script src="../../three.js/examples/js/Stats.js"></script>
 <script>
 	if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 	document.body.style.margin = '0';
@@ -75,10 +76,21 @@ Thanks to Mr.Doob ~ Altered Qualia ~ Ethan Luo ~ jerome Etienne
 			material.morphTargets = true;
 			material.color.setHex( 0xffaaaa ); // brightens them a bit
 			material.ambient.setHex( 0x222222 );
+			material.map.offset.x = 0.5 * Math.random();
+			material.map.offset.y = 0.5 * Math.random();
+			
 			var faceMaterial = new THREE.MeshFaceMaterial();
 			for ( var i = 0; i < 3; i ++ ) {
+			
+			material.map.offset.x = 0.5 * Math.random();
+			material.map.offset.y = 0.5 * Math.random();
+			
+			var faceMaterial = new THREE.MeshFaceMaterial();			
+			
 				morph = new THREE.MorphAnimMesh( geometry, faceMaterial );
 				// one second duration
+				morph.geometry.materials[0].map.offset.x = 100 * Math.random();
+				morph.geometry.materials[0].map.offset.y = 100 * Math.random();
 				morph.duration = 1000;
 				// random animation offset
 				morph.time = 1000 * Math.random();

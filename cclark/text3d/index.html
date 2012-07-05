@@ -34,6 +34,7 @@
 // console.log(mesh);
 		animate();
 	}	
+/*	
 	function callBack1(geometry) {
 		thing1 = new THREE.Mesh( geometry, material );
 		thing1.position.set(0, 2, 2);
@@ -62,6 +63,7 @@
 		thing5.position.set(-8, -2, -1);
 		scene.add( thing5 );
 	}
+*/
 	
     function init() {
 		if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
@@ -83,13 +85,13 @@
 
 		mesh = new THREE.Mesh( geometry, material );
 		mesh.doubleSided = true;
-		mesh.rotation.x = - Math.PI / 2;
+		//mesh.rotation.x = - Math.PI / 2;
 		mesh.position.set(0, 4, 0)
 		scene.add( mesh );
 		
 		mesh = new THREE.Mesh( geometry, material );
 		mesh.doubleSided = true;
-		mesh.rotation.x = - Math.PI / 2;
+		//mesh.rotation.x = - Math.PI / 2;
 		mesh.position.set(0, -4, 0)
 		scene.add( mesh );
 
