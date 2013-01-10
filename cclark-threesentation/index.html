@@ -7,13 +7,16 @@
 </head>
 <body>
 <script src="http://mrdoob.github.com/three.js/build/three.min.js"></script>
-<script src="http://mrdoob.github.com/three.js/examples/js/Stats.js"></script>
+<script src="http://mrdoob.github.com/three.js/examples/js/controls/TrackballControls.js"></script>
+<script src="http://mrdoob.github.com/three.js/examples/js/libs/stats.min.js"></script>
 <script src="http://mrdoob.github.com/three.js/examples/js/Detector.js"></script>
 <script src="http://mrdoob.github.com/three.js/examples/fonts/helvetiker_bold.typeface.js"></script>
 
-<script src="http://mrdoob.github.com/three.js/examples/js/Tween.js"></script>
+<script src="http://mrdoob.github.com/three.js/examples/js/libs/tween.min.js"></script>
 <script src="http://mrdoob.github.com/three.js/examples/js/Sparks.js"></script>
+<!--
 <script src="http://mrdoob.github.com/three.js/examples/js/ShaderExtras.js"></script>
+-->
 <script src="http://mrdoob.github.com/three.js/examples/js/postprocessing/EffectComposer.js"></script>
 <script src="http://mrdoob.github.com/three.js/examples/js/postprocessing/RenderPass.js"></script>
 <script src="http://mrdoob.github.com/three.js/examples/js/postprocessing/ShaderPass.js"></script>
@@ -56,8 +59,8 @@
 	' ~ <a href="JavaScript:noErase()">no Erase</a>';
 	var audioElement = document.createElement('audio');
 	
-    var scene, camera, controls, stats, renderer;
-    var texture, material, geometry, mesh;
+  var scene, camera, controls, stats, renderer;
+  var texture, material, geometry, mesh;
 	var liambientLight, pointLight, directionLight, spotLight;
 	
 	var loader = new THREE.JSONLoader();

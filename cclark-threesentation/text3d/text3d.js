@@ -112,6 +112,4 @@ Empty the chache
 			// camera.position.z += 0.025 * Math.sin( tim * 0.15);
 // console.log( tim, camera.position.x, camera.position.y, camera.position.z );			
 		}	
-		
-		
 	}	
