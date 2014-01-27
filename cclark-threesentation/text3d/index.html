@@ -4,16 +4,15 @@
 <title>text 3d</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-<!-->
-<script src="http://mrdoob.github.com/three.js/build/Three.js"></script>
-<script src="http://mrdoob.github.com/three.js/examples/js/Stats.js"></script>
-<script src="http://mrdoob.github.com/three.js/examples/js/Detector.js"></script>
-<script src="http://mrdoob.github.com/three.js/examples/fonts/helvetiker_regular.typeface.js"></script>
--->
-<script src="../../three.js/build/Three.js"></script>
-<script src="../../three.js/examples/js/Detector.js"></script>
-<script src="../../three.js/examples/js/Stats.js"></script>
-<script src="../../three.js/examples/fonts/helvetiker_regular.typeface.js"></script>
+<script src='../../../../../git-repos/three.js/examples/js/Detector.js'></script>
+<script src='../../../../../git-repos/three.js/build/three.min.js'></script>
+<script src='../../../../../git-repos/three.js/examples/js/controls/TrackballControls.js'></script>
+<script src='../../../../../git-repos/three.js/examples/js/libs/stats.min.js'></script>
+
+<script src='http://mrdoob.github.com/three.js/examples/js/Detector.js'></script>
+<script src='http://mrdoob.github.com/three.js/build/three.min.js'></script>
+<script src='http://mrdoob.github.com/three.js/examples/js/controls/TrackballControls.js'></script>
+<script src='http://mrdoob.github.com/three.js/examples/js/libs/stats.min.js'></script>
 </head>
 <body>
 <script>
@@ -128,9 +127,10 @@
 	
 		
 		light = new THREE.AmbientLight( 0xff0000 );
-		scene.add( light );		
+		scene.add( light );	
 		
-		lightMesh = new THREE.Mesh( new THREE.SphereGeometry( 1, 8, 8 ), material );
+		geometry = new THREE.SphereGeometry( 1, 8, 8 );
+		lightMesh = new THREE.Mesh( geometry, material );
 		scene.add( lightMesh );		
 
 		light = new THREE.DirectionalLight( 0xffffff );

@@ -49,7 +49,7 @@ scene.fog = new THREE.Fog( 0x000000, 1, 50);
 	texture	= THREE.ImageUtils.loadTexture( "long-walk/water.jpg" );
 	texture.wrapT = THREE.RepeatWrapping;
 		material = new THREE.MeshPhongMaterial( { color: 0xffdd99, map : texture } );
-		THREE.ColorUtils.adjustHSV( material.color, 0, 0, 0.9 );
+		THREE.ColorUtils.adjustHSL( material.color, 0, 0, 0.9 );
 		material.ambient = material.color;
 			
 	geometry = new THREE.CubeGeometry( 80, 10, 80 );

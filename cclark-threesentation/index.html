@@ -131,7 +131,7 @@
 		stats.domElement.style.zIndex = 100;
 		document.body.appendChild( stats.domElement );		
 
-        renderer = new THREE.WebGLRenderer( {clearColor: 0x000000, clearAlpha: 1, antialias: true } );
+        renderer = new THREE.WebGLRenderer( {setClearColor: 0x000000, antialias: true } );
         renderer.setSize( window.innerWidth, window.innerHeight );
 		//renderer.setClearColor( scene.fog.color, 1 );
 		renderer.autoClear = false;

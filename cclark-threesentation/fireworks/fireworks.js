@@ -194,7 +194,7 @@ Clear cache after eac edit
 	for( var v = 0; v < vertices.length; v ++ ) {
 		values_size[ v ] = 50;
 		values_color[ v ] = new THREE.Color( 0xffffff );
-		values_color[ v ].setHSV( 0, 0, 0 );
+		values_color[ v ].setHSL( 0, 0, 0 );
 		particles.vertices[ v ].set( Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY );
 	}
 	child.add( particleCloud );
@@ -233,8 +233,8 @@ Clear cache after eac edit
 			pointLight.position.y = emitterpos.y = -pointOnShape.y * 0.3 + 20;
 			pointLight.position.z = 50;
 			particles.vertices[ target ] = p.position;
-			values_color[ target ].setHSV( hue, 0.8, 0.15 );
-			pointLight.color.setHSV( hue, 0.8, 0.95 );
+			values_color[ target ].setHSL( hue, 0.8, 0.15 );
+			pointLight.color.setHSL( hue, 0.8, 0.95 );
 
 		};
 	};
@@ -243,7 +243,7 @@ Clear cache after eac edit
 		var target = particle.target;
 		if ( target ) {
 			// Hide the particle
-			values_color[ target ].setHSV( 0, 0, 0 );
+			values_color[ target ].setHSL( 0, 0, 0 );
 			particles.vertices[ target ].set( Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY );
 			// Mark particle system as available by returning to pool
 			Pool.add( particle.target );
