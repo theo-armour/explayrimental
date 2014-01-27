@@ -2,13 +2,13 @@ Art Scott Orbit Thingy
 ======================
 
 
-[Art Scott Orbit Thingy]( art-scott-orbit-thingy.html )
+[Art Scott Orbit Thingy]( https://github.com/theo-armour/explayrimental/art-scott/art-scott-orbit-thingy.html )
 
 ## Project Links
 
 You have two ways of viewing thesw files:
 
-* Code hosted on GitHub: [fgx.github.io]( http://theo-armour.github.io/explayrimental/art-scott/ "view the files as apps." ) <input value="<< You are now probably here." size=28 style="font:bold 12pt monospace;border-width:0;" >  
+* Code hosted on GitHub: [fgx.github.io]( https://github.com/theo-armour/explayrimental/tree/gh-pages/art-scott "view the files as apps." ) <input value="<< You are now probably here." size=28 style="font:bold 12pt monospace;border-width:0;" >  
 * Source code on GitHub: [github.com/fgx]( https://github.com/theo-armour/explayrimental/tree/gh-pages/art-scott/ ) "View the files as source code." ) <scan style=display:none ><< You are now probably here.</scan>
 
 
