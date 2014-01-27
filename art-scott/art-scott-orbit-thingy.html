@@ -47,6 +47,8 @@
 		camera.position.set( 200, 200, 200 );
 		controls = new THREE.TrackballControls( camera, renderer.domElement );
 
+		THREE.ImageUtils.crossOrigin = 'anonymous';
+
  		var light = new THREE.DirectionalLight( 0xffffff, 1 );
 		// light.position.set( 0, 500, 0 );
 		light.position = camera.position;
