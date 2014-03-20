@@ -43,29 +43,29 @@
 		pointLight.position.set( 5, 5, 5 );
 		scene.add( pointLight );
 
-// axes
-		scene.add( new THREE.ArrowHelper( v(1, 0, 0), v(0, 0, 0), 30, 0xcc0000) );
-		scene.add( new THREE.ArrowHelper( v(0, 1, 0), v(0, 0, 0), 30, 0x00cc00) );
-		scene.add( new THREE.ArrowHelper( v(0, 0, 1), v(0, 0, 0), 30, 0x0000cc) );
-
 // ground plane
 		var geometry, material, mesh;
-		geometry = new THREE.CubeGeometry( 200, 1, 100 );
-		material = new THREE.MeshNormalMaterial();
+		geometry = new THREE.CubeGeometry( 10, 1, 10 );
+		texture = THREE.ImageUtils.loadTexture( "../birch256.jpg" );
+		texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+		texture.repeat.set( 3, 3);
+		material = new THREE.MeshBasicMaterial( { map: texture } );
 		mesh = new THREE.Mesh( geometry, material );
-		mesh.position.set( 0, -10, 0 );
+		mesh.position.set( 0, -0.5, 0 );
 		scene.add( mesh );
 
 		loader = new THREE.JSONLoader();
 		loader.load( 'no-gucci.js', function ( geometry, materials) {
-			mesh = new THREE.Mesh( geometry,  new THREE.MeshFaceMaterial( materials ) );
+			materials[0].opacity = 0.3;
+			materials[0].transparent = true;
 			for (var i = 0, len = materials.length; i < len; i++) {
 				materials[i].side = 2;
 			} 
+			mesh = new THREE.Mesh( geometry,  new THREE.MeshFaceMaterial( materials ) );
+			mesh.position.set( -2, 0, 0 );
 			mesh.scale.set( 100, 100, 100 )
 			scene.add( mesh );
 		} );
-
 	}
 	function v( x, y, z ){ return new THREE.Vector3( x, y, z ); }
 
