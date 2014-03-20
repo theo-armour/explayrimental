@@ -1,4 +1,4 @@
-[Theo Armour](../../index.html ) &raquo; &raquo; [Funniture]( ./index.html )
+[Theo Armour](../../index.html ) &raquo;<br>[Funniture]( ./index.html )
 ================================================================================================
 
 <p id=rm >
@@ -18,5 +18,5 @@
 
 ****
 
-[Source Code on GitHub]( https://github.com/theo-armour/theo-armour.github.io )  
+[Source Code on GitHub]( https://github.com/theo-armour/explayrimental )  
 [Copyright and License]( http://theo-armour.github.io/home/r3/index.html#../../copyright-notice-and-license.md )
