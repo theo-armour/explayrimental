@@ -1,10 +1,23 @@
 Dev Notes
 =========
 
+### 2014-03-20 ~ Review
+All staeel have models in Sketchup
+SketchUp to Blender is well documented
 
-2014-03-19 ~ 
+The trick is to get the data durectly from the manufacturers web site.
+	* Herman Miller
+	* AllSteel
+
+Blender Three.js is grayed out if the entire object is selected or if nothing is selected
+May need to change the case of JPG and other parts of image files in the .js file when set to case sensitive site such as Linux and GitHub
+
+Polantis has Ikea and Baccarat models!
+
+This could be work for Dusan...
+
+### 2014-03-19 ~ Hello World
 21:13  ~ Start Blender
-
 
 21:54 ~  model geometry coomes in. learning about materials.
 Aeron Chair downloaded from Herman Moller.
