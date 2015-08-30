@@ -20,6 +20,6 @@ At the top of this page there is a button or link that transfers you from one vi
  
 
 
-[Another Markdown File 1]( #another-markdown-file-1.md)  
-[Another Markdown File 2]( #another-markdown-file-2.md)  
+[Another Markdown File 1]( http://theo-armour.github.io/explayrimental/tammik/showdown/index.html#another-markdown-file-1.md)  
+[Another Markdown File 2]( http://theo-armour.github.io/explayrimental/tammik/showdown/index.html#another-markdown-file-2.md)  
 
