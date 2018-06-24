@@ -33,7 +33,7 @@
 
 		renderer = new THREE.WebGLRenderer( { alpha: 1, antialias: true, clearColor: 0xffffff }  );
 		renderer.setSize( window.innerWidth, window.innerHeight );
-		renderer.shadowMapEnabled = true;
+		renderer.shadowMap.enabled = true;
 		renderer.shadowMapSoft = true;
 		document.body.appendChild( renderer.domElement );
 
@@ -47,32 +47,18 @@
 		controls = new THREE.OrbitControls( camera );
 		controls.minDistance = 10;
 		controls.maxDistance = 1000;
+		controls.autoRotate = true;
 
 // Lights
-		light = new THREE.AmbientLight( 0xffffff );
-		scene.add( light );
+		//light = new THREE.AmbientLight( 0xffffff );
+		//scene.add( light );
 
-		light = new THREE.DirectionalLight( 0xffffff, 1 );
-		light.position.set( -200, 200, 200 );
-
-		var d = 150;
-		light.shadowCameraLeft = -d;
-		light.shadowCameraRight = d;
-		light.shadowCameraTop = d;
-		light.shadowCameraBottom = -d;
-
-		light.shadowCameraNear = 200;
-		light.shadowCameraFar = 500;
-
-// can help stop appearance of gridlines in objects with opacity < 1
-		light.shadowBias = -0.0002; // default 0 ~ distance fron corners?
-		light.shadowDarkness = 0.3; // default 0.5
-		light.shadowMapWidth = 2048;  // default 512
-		light.shadowMapHeight = 2048;
-
-		light.castShadow = true;
-		light.shadowCameraVisible = true;
-		scene.add( light );
+		let size = 250;
+		lightDirectional = new THREE.DirectionalLight( 0x888888 );
+		lightDirectional.position.set( -size, size, size );
+		lightDirectional.shadow.camera.scale.set( 0.1 * size, 0.1 * size, 0.5 );
+		lightDirectional.castShadow = true;
+		scene.add( lightDirectional );
 
 		light = new THREE.PointLight( 0xffffff, 1 );
 		light.position = camera.position;
@@ -81,11 +67,11 @@
 // Ground Plane
 		geometry = new THREE.BoxGeometry( 200, 5, 200 );
 
-//		var material.color = 0x202099; 
+//		var material.color = 0x202099;
 //		var material = new THREE.MeshNormalMaterial();
 		var material = new THREE.MeshPhongMaterial( {
-			color: 0xffffff * Math.random(), 
-			ambient: 0xffffff * Math.random(),
+			color: 0xffffff * Math.random(),
+			//ambient: 0xffffff * Math.random(),
 			specular: 0xffffff * Math.random(),
 			shininess: 50,
 			side: THREE.DoubleSide
@@ -106,8 +92,8 @@
 
 //		material = new THREE.MeshNormalMaterial();
 		material = new THREE.MeshPhongMaterial( {
-			color: 0xffffff * Math.random(), 
-			ambient: 0xffffff * Math.random(),
+			color: 0xffffff * Math.random(),
+			//ambient: 0xffffff * Math.random(),
 			specular: 0xffffff * Math.random(),
 			shininess: 50,
 			side: THREE.DoubleSide
@@ -116,8 +102,8 @@
 //		material = new THREE.MeshLambertMaterial( { ambient: 0xffffff, color: 0xffffff * Math.random() } );
 //		material = new THREE.MeshPhongMaterial( { ambient: 0x030303, color: 0xdddddd, specular: 0x009900, shininess: 30, shading: THREE.FlatShading } )
 		material = new THREE.MeshPhongMaterial( {
-			color: 0xffffff * Math.random(), 
-			ambient: 0xffffff * Math.random(),
+			color: 0xffffff * Math.random(),
+			//ambient: 0xffffff * Math.random(),
 			specular: 0xffffff * Math.random(),
 //			shading: THREE.FlatShading,
 			shininess: 0.001
@@ -132,13 +118,13 @@
 		geometry = new THREE.BoxGeometry( 2, 2, 2 );
 		for ( var x = 0; x < 50; x++ ) {
 			for ( var y = 0; y < 50; y++ ) {
-				
+
 				material = new THREE.MeshPhongMaterial( {
-					color: 0xffffff * Math.random(), 
-					ambient: 0xffffff * Math.random(),
+					color: 0xffffff * Math.random(),
+					//ambient: 0xffffff * Math.random(),
 					opacity: Math.random(),
 					specular: 0xffffff * Math.random(),
-					shading: THREE.FlatShading,
+					//shading: THREE.FlatShading,
 					shininess: 10,
 					transparent: true
 				} );
@@ -151,15 +137,19 @@
 				scene.add( mesh );
 				cubes.push( mesh );
 
-				helper = new THREE.BoxHelper( mesh );
-				helper.material.color.setRGB( 1, 0, 0 );
-				scene.add( helper );
+				const edges = new THREE.EdgesGeometry( geometry );
+				const line = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0xffffff } ) );
+				line.material.color.setRGB( 1, 0, 0 );
+				mesh.add( line );
+
 			}
 		}
 
+		toggleBackgroundGradient();
+
 	}
 
-	function cos(a){return Math.cos(a);} 
+	function cos(a){return Math.cos(a);}
 	function sin(a){return Math.sin(a);}
 
 	var delta = 0;
@@ -170,11 +160,29 @@
 		for ( var x = 0; x < 50; x++ ) {
 			for ( var y = 0; y < 50; y++ ) {
 				cubes[ count ].position.y = 50 * sin( x * 0.07 + delta) * sin( y * 0.07 + delta);
-				cubes[ count ].rotation.y = cubes[ count ].rotation.z = timestamp * 0.0005; 
+				cubes[ count ].rotation.y = cubes[ count ].rotation.z = timestamp * 0.0005;
 				cubes[ count++ ].scale.y = Math.abs( Math.sin( timestamp * 0.001 ) ) * 20;
 			}
-		} 
+		}
 	}
+
+
+
+
+	function toggleBackgroundGradient() {
+
+// 2018-06-23
+
+		const col = function() { return ( 0.5 + 0.5 * Math.random() ).toString( 16 ).slice( 2, 8 ); };
+		const pt = function() { return ( Math.random() * window.innerWidth ).toFixed( 0 ); }
+		const image = document.body.style.backgroundImage;
+
+		document.body.style.backgroundImage = image ? '' : 'radial-gradient( circle farthest-corner at ' +
+			pt() + 'px ' + pt() + 'px, #' + col() + ' 0%, #' + col() + ' 50%, #' + col() + ' 100% ) ';
+
+	}
+
+
 
 	function animate( timestamp ) {
 		updateGeometry( timestamp );

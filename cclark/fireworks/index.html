@@ -15,20 +15,20 @@ body {
 </style>
 </head>
 <body>
-  
-<script src="https://raw.github.com/mrdoob/three.js/r47/build/Three.js"></script>
-<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/Stats.js"></script>
-<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/Tween.js"></script>
-<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/Sparks.js"></script>
-<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/ShaderExtras.js"></script>
-<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/postprocessing/EffectComposer.js"></script>
-<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/postprocessing/RenderPass.js"></script>
-<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/postprocessing/ShaderPass.js"></script>
-<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/postprocessing/MaskPass.js"></script>
-<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/postprocessing/BloomPass.js"></script>
-<script src="https://raw.github.com/mrdoob/three.js/r47/examples/js/postprocessing/FilmPass.js"></script> 	
-	
-<!--	                                                                                                                  
+
+<script src="https://rawgit.com/mrdoob/three.js/r47/build/Three.js"></script>
+<script src="https://rawgit.com/mrdoob/three.js/r47/examples/js/Stats.js"></script>
+<script src="https://rawgit.com/mrdoob/three.js/r47/examples/js/Tween.js"></script>
+<script src="https://rawgit.com/mrdoob/three.js/r47/examples/js/Sparks.js"></script>
+<script src="https://rawgit.com/mrdoob/three.js/r47/examples/js/ShaderExtras.js"></script>
+<script src="https://rawgit.com/mrdoob/three.js/r47/examples/js/postprocessing/EffectComposer.js"></script>
+<script src="https://rawgit.com/mrdoob/three.js/r47/examples/js/postprocessing/RenderPass.js"></script>
+<script src="https://rawgit.com/mrdoob/three.js/r47/examples/js/postprocessing/ShaderPass.js"></script>
+<script src="https://rawgit.com/mrdoob/three.js/r47/examples/js/postprocessing/MaskPass.js"></script>
+<script src="https://rawgit.com/mrdoob/three.js/r47/examples/js/postprocessing/BloomPass.js"></script>
+<script src="https://rawgit.com/mrdoob/three.js/r47/examples/js/postprocessing/FilmPass.js"></script>
+
+<!--
 <script src="../../three.js/build/Three.js"></script>
 <script src="../../three.js/examples/js/Detector.js"></script>
 <script src="../../three.js/examples/js/Stats.js"></script>
@@ -40,8 +40,8 @@ body {
 <script src="../../three.js/examples//js/postprocessing/ShaderPass.js"></script>
 <script src="../../three.js/examples//js/postprocessing/MaskPass.js"></script>
 <script src="../../three.js/examples//js/postprocessing/BloomPass.js"></script>
-<script src="../../three.js/examples//js/postprocessing/FilmPass.js"></script> 
--->	
+<script src="../../three.js/examples//js/postprocessing/FilmPass.js"></script>
+-->
 <script type="x-shader/x-vertex" id="vertexshader">
 	attribute float size;
 	attribute vec3 pcolor;
@@ -102,12 +102,12 @@ body {
 		pointLight = new THREE.PointLight( 0xffffff, 2, 300 );
 		pointLight.position.set( 0, 0, 0 );
 		scene.add( pointLight );
-	
+
 		parent = new THREE.Object3D();
 		//parent.add( text );
 		scene.add( parent );
-		
-		
+
+
 		var loader = new THREE.JSONLoader();
 		loader.load( "cclark.js", function ( geometry ) {
 			material = new THREE.MeshPhongMaterial( { ambient: 0xaaaaaa, color: 0x888888, specular: 0x00ff00, shininess: 50, opacity: 0.6 }  );
@@ -119,7 +119,7 @@ body {
 			parent.add( mesh );
 			scene.add( parent );
 		} );
-			
+
 		///// Create particle objects for Three.js
 		var particlesLength = 70000;
 		var particles = new THREE.Geometry();
@@ -187,11 +187,11 @@ body {
 			context.bezierCurveTo( x + 8.0, y + 3.5, x + 8.0, y, x + 5.0, y );
 			context.bezierCurveTo( x + 3.5, y, x + 2.5, y + 2.5, x + 2.5, y + 2.5 );
 			context.closePath();
-*/				
+*/
 			context.beginPath();
 			context.arc( 64, 64, 60, 0, Math.PI * 2, false) ;
 			context.closePath();
-			
+
 			context.lineWidth = 0.5; //0.05
 			context.stroke();
 			context.restore();
@@ -234,7 +234,7 @@ body {
 		// Heart
 		var x = 0, y = 0;
 		heartShape = new THREE.Shape();
-		
+
 /*
 		heartShape.moveTo( x + 25, y + 25 );
 		heartShape.bezierCurveTo( x + 25, y + 25, x + 20, y, x, y );
@@ -243,28 +243,28 @@ body {
 		heartShape.bezierCurveTo( x + 60, y + 77, x + 80, y + 55, x + 80, y + 35 );
 		heartShape.bezierCurveTo( x + 80, y + 35, x + 80, y, x + 50, y );
 		heartShape.bezierCurveTo( x + 35, y, x + 25, y + 25, x + 25, y + 25 );
-*/				
-		
+*/
+
 		heartShape.moveTo( x - 60, y + 20);
 		heartShape.bezierCurveTo( x - 60, y + 20, x - 40, y + 0, x + 10, y + 10 );
 		heartShape.bezierCurveTo( x + 0, y + 30, x - 50, y + 50, x - 60, y + 80);
 		// heartShape.moveTo( x - 60, y + 80);
 		heartShape.bezierCurveTo( x - 60, y + 80, x + 40, y + 80, x + 0, y + 80);
-		
+
 		heartShape.moveTo( x + 60, y + 20);
 		heartShape.bezierCurveTo( x + 60, y + 20, x + 70, y + 10, x + 75, y + 0 );
 		heartShape.bezierCurveTo( x + 80, y + 10, x + 80, y + 40, x + 80, y + 80);
 
 		//heartShape.moveTo( x - 20, y + 0);
-		//heartShape.bezierCurveTo( x - 20, y + 0, x + 50, y + 50, x + 100, y + 100 );				
-		
+		//heartShape.bezierCurveTo( x - 20, y + 0, x + 50, y + 50, x + 100, y + 100 );
+
 		var hue = 0;
 		var setTargetParticle = function() {
 			var target = Pool.get();
 			values_size[ target ] = Math.random() * 200 + 100;
 			return target;
 		};
-		
+
 		var onParticleCreated = function( p ) {
 			var position = p.position;
 			p.target.position = position;
@@ -389,12 +389,12 @@ body {
 			sparksEmitter.start();
 		}
 	}
-	
+
 	function onDocumentMouseMove( event ) {
 		mouseX = event.clientX - windowHalfX;
 		targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.02;
 	}
-	
+
 	function onDocumentTouchStart( event ) {
 		if ( event.touches.length == 1 ) {
 			event.preventDefault();
@@ -402,7 +402,7 @@ body {
 			targetRotationOnMouseDown = targetRotation;
 		}
 	}
-			
+
 	function onDocumentTouchMove( event ) {
 		if ( event.touches.length == 1 ) {
 			event.preventDefault();

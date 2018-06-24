@@ -14,7 +14,7 @@ var speed=50; // lower is faster
 var reveal=2; // between 0 and 2 only. The higher, the faster the word appears
 var effectalign="center" //enter "center" to center it.   or "dafault"
 /***********************************************
- *http://www.dynamicdrive.com/dynamicindex10/matrixeffect.htm 
+ *http://www.dynamicdrive.com/dynamicindex10/matrixeffect.htm
 * The Matrix Text Effect- by Richard Womersley (http://www.mf2fm.co.uk/rv)
 * This notice must stay intact for use
 * Edited by Theo Armour ~ 2012-03-12
@@ -39,7 +39,7 @@ function drawMatrix() {
 	matrx.style.fontFamily = "Monospace";
 	matrx.style.fontSize = wd / len + 'px'; // '60px';
 
-	// matrx.style.width = matrx.style.fontSize; // '60px'; 
+	//matrx.style.width = matrx.style.fontSize; // '60px';
 	matrx.style.padding = '0px';
 	matrx.style.margin = '0px auto 0px auto';
 	matrx.style.textAlign = 'center';
@@ -52,7 +52,7 @@ function drawMatrix() {
 	ma_txt=(w3c)?matrix.firstChild.nodeValue:matrix.innerHTML;
 	ma_txt=" "+ma_txt+" ";
 	columns=ma_txt.length;
-	
+
 	if (w3c) {
 		while (matrix.childNodes.length) matrix.removeChild(matrix.childNodes[0]);
 		ma_tab=document.createElement("table");
@@ -116,6 +116,7 @@ function mytricks() {
         matemp=(w3c)?document.getElementById("Mx"+(ma_row-2)+"y"+y):document.all["Mx"+(ma_row-2)+"y"+y];
         matemp.style.fontWeight="normal";
         matemp.style.color="#00ff00";
+		matemp.style.textShadow = '0 0 50px lightgreen';
       }
       if (ma_row>2) {
           matemp=(w3c)?document.getElementById("Mx"+(ma_row-3)+"y"+y):document.all["Mx"+(ma_row-3)+"y"+y];
@@ -148,6 +149,7 @@ function zoomer(ycol) {
       }
       mtmp.style.color="#33ff66";
       mtmp.style.fontWeight="bold";
+	  mtmp.style.textShadow = '0 0 50px lightgreen';
     }
     if (Math.random()<reveal) {
       mtmp=ma_cho.indexOf(ma_txt.charAt(ycol));

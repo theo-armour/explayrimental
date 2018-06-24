@@ -10,6 +10,13 @@
 <script src=http://mrdoob.github.io/three.js/examples/js/controls/OrbitControls.js ></script>
 <script src=http://mrdoob.github.io/three.js/examples/js/libs/stats.min.js ></script>
 <script>
+
+	let images;
+	let objects = [];
+
+	const url = 'http://janwurm.com/wp-content/uploads/2008/01/';
+	const urlCORS = 'https://cors-anywhere.herokuapp.com/';
+
 	var info, renderer, scene, camera, controls, stats, light;
 
 	var cubes = [];
@@ -25,7 +32,7 @@
 		info = document.body.appendChild( document.createElement( 'div' ) );
 		info.style.cssText = 'left: 20px; position: absolute; top: 0px; width: 100% ';
 		info.innerHTML = '<a href="" ><h1>' + document.title + '</h1></a>' +
-			'<div id=msg></div>';
+			'<div id=divLog></div>';
 
 		stats = new Stats();
 		stats.domElement.style.cssText = 'position: absolute; right: 0; top: 0; z-index: 100; ';
@@ -40,42 +47,33 @@
 		scene = new THREE.Scene();
 
 		camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
-		camera.position.set( 100, 100, 100 );
+		camera.position.set( 80, 80, 80 );
 		scene.add( camera ); // for light to follow
 
-// controls
+		// controls
 		controls = new THREE.OrbitControls( camera );
 		controls.minDistance = 10;
 		controls.maxDistance = 1000;
 		controls.autoRotate = true;
 
-// Lights
+		// Lights
 		light = new THREE.AmbientLight( 0xffffff );
 		scene.add( light );
 
-		//light = new THREE.DirectionalLight( 0xffffff , 0.5);
-		//light.position.set( -200, 200, 200 );
-
-		let size = 150;
+		let size = 300;
 		lightDirectional = new THREE.DirectionalLight( 0xffeedd );
 		lightDirectional.position.set( -size, size, size );
 		lightDirectional.shadow.camera.scale.set( 0.1 * size, 0.1 * size, 0.5 );
 		lightDirectional.castShadow = true;
-		lightDirectional.castShadow = true;
-		//lightDirectional.shadowCameraVisible = true;
 		scene.add( lightDirectional );
 
 		light = new THREE.PointLight( 0x888888, 0.5 );
 		camera.add( light );
 
-// Ground Plane
+		// Ground Plane
 		geometry = new THREE.BoxGeometry( 200, 5, 200 );
-
-//		var material.color = 0x202099;
-//		var material = new THREE.MeshNormalMaterial();
-		var material = new THREE.MeshPhongMaterial( {
+		material = new THREE.MeshPhongMaterial( {
 			color: 0xffffff * Math.random(),
-			//ambient: 0xffffff * Math.random(),
 			specular: 0xffffff * Math.random(),
 			shininess: 50,
 			side: THREE.DoubleSide
@@ -88,10 +86,8 @@
 		scene.add( mesh );
 		scene.add( new THREE.BoxHelper( mesh ) );
 
-// Sphere
+		// Sphere
 		geometry = new THREE.SphereGeometry( 25, 50, 50 );
-
-//		material = new THREE.MeshNormalMaterial();
 		material = new THREE.MeshPhongMaterial( {
 			color: 0xffffff * Math.random(),
 			//ambient: 0xffffff * Math.random(),
@@ -99,14 +95,9 @@
 			shininess: 50,
 			side: THREE.DoubleSide
 		} );
-//		material = new THREE.MeshBasicMaterial( { color: 0x888888, opacity: 0.7, side: THREE.DoubleSide, transparent: true });
-//		material = new THREE.MeshLambertMaterial( { ambient: 0xffffff, color: 0xffffff * Math.random() } );
-//		material = new THREE.MeshPhongMaterial( { ambient: 0x030303, color: 0xdddddd, specular: 0x009900, shininess: 30, shading: THREE.FlatShading } )
 		material = new THREE.MeshPhongMaterial( {
 			color: 0xffffff * Math.random(),
-			//ambient: 0xffffff * Math.random(),
 			specular: 0xffffff * Math.random(),
-//			shading: THREE.FlatShading,
 			shininess: 0.001
 		} );
 		mesh = new THREE.Mesh( geometry, material );
@@ -115,10 +106,12 @@
 		mesh.receiveShadow = true;
 		scene.add( mesh );
 
-// Cubes
+		// Cubes
+		/*
 		geometry = new THREE.BoxGeometry( 20, 20, 20 );
 
 		for (var i = 0; i < 50; i++) {
+
 			material = new THREE.MeshPhongMaterial( {
 				color: 0xffffff * Math.random(),
 				//ambient: 0xffffff * Math.random(),
@@ -143,11 +136,81 @@
 			mesh.add( line );
 
 		}
+		*/
 
 		toggleBackgroundGradient();
 
+		 fetchImageNames( url, divLog );
+
 	}
 
+
+
+	function fetchImageNames( url, target ){
+		//console.log (url );
+
+		const request = new Request( urlCORS + url );
+
+		fetch( request )
+			.then( function( response ) { return response.text() })
+			.then( function( text ) { parseText( text, divLog ) } );
+
+	}
+
+
+
+	function parseText( text, target ) {
+
+		const parser = new DOMParser();
+
+		const doc = parser.parseFromString( text, "text/html" );
+		//console.log( 'doc', doc );
+
+		images = Array.from( doc.links ).map( link=> link.innerText.trim() ).filter( link => !link.includes( 'thumb') );
+		images.shift();
+		//console.log( 'images', images );
+
+		setImages()
+
+	}
+
+
+	function setImages() {
+
+		//const url = 'http://janwurm.com/wp-content/uploads/2015/11/';
+
+		const urlCORS = 'https://cors-anywhere.herokuapp.com/';
+
+		loader = new THREE.TextureLoader();
+
+		//geometry = new THREE.BoxBufferGeometry( 20, 20, 20 );
+
+		for ( image of images ) {
+
+			texture = loader.load ( urlCORS + url + image );
+			texture.minFilter = THREE.LinearFilter;
+
+			geometry = new THREE.BoxBufferGeometry( 50, 50, 1);
+			geometry.applyMatrix( new THREE.Matrix4().makeRotationX( 0.5 * Math.PI ) );
+			material = new THREE.MeshBasicMaterial( { map: texture, opacity: 0.8, side: 2, transparent: true } );
+			mesh = new THREE.Mesh( geometry, material );
+			//mesh.position.set( 100 * Math.random() - 50, 100 * Math.random() - 50, 100 * Math.random() - 50 );
+			//mesh.rotation.y = 1.56 ;
+
+			mesh.position.set( 100 * Math.random() - 50, 100 * Math.random(), 100 * Math.random() - 50 );
+			mesh.rotation.set( 6.3 * Math.random(), 1.57 * Math.random(), 3.14 * Math.random() );
+			mesh.castShadow = true;
+			mesh.receiveShadow = true;
+			mesh.rotation.z = 4 * Math.random() ;
+			mesh.deltaX = Math.random() - 0.5;
+			mesh.deltaY = Math.random() - 0.5;
+			mesh.deltaZ = Math.random() - 0.5;
+			scene.add( mesh );
+			cubes.push( mesh );
+
+		}
+
+	}
 
 
 	function toggleBackgroundGradient() {
@@ -166,7 +229,6 @@
 
 	function animate( timestamp ) {
 
-//		var timer = Date.now();
 		for (var i = 0, len = cubes.length; i < len; i++) {
 			cubes[i].rotation.y = timestamp * 0.0002;
 			cubes[i].position.y = Math.abs( Math.sin( timestamp * 0.001 ) ) * 20;
@@ -174,7 +236,6 @@
 		}
 		renderer.render( scene, camera );
 		controls.update();
-		//stats.update();
 		requestAnimationFrame( animate );
 
 	}

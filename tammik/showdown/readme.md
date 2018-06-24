@@ -1,8 +1,8 @@
 Showdown demo for Jeremy ~ Read Me
 ===
 
-<span style=display:none; >[You are now in GitHub source code view - click here to view as web page]( http://theo-armour.github.io/explayrimental/tammik/showdown/ "View file as a web page." ) </span>
-<input type=button value='You are now in GitHub Web Page View - Click here to view file as source code on GitHub' onclick=window.location.href='https://github.com/theo-armour/explayrimental/tree/gh-pages/tammik/showdown'; />
+<span style=display:none; >[You are now in GitHub source code view - click here to view Read Me file as a web page]( http://theo-armour.github.io/explayrimental/tammik/showdown/ "View file as a web page." ) </span>
+<input type=button value='You are now in GitHub web page view - Click here to view Read Me file as source code' onclick=window.location.href='https://github.com/theo-armour/explayrimental/tree/gh-pages/tammik/showdown'; />
 
 
 Welcome [3D Coder Readers]( http://the3dwebcoder.typepad.com/blog/2015/08/hackergarten-chromium-and-markdown.html#comment-2222672923 )!

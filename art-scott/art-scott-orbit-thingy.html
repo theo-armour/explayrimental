@@ -5,8 +5,8 @@
 <meta charset=utf-8>
 </head>
 <body>
-<script src = http://mrdoob.github.io/three.js/build/three.min.js ></script>
-<script src = http://mrdoob.github.io/three.js/examples/js/controls/TrackballControls.js ></script>
+<script src = "https://cdn.rawgit.com/mrdoob/three.js/r66/build/three.min.js" ></script>
+<script src = "https://cdn.rawgit.com/mrdoob/three.js/r74/examples/js/controls/TrackballControls.js" ></script>
 <script src = http://mrdoob.github.io/three.js/examples/js/libs/stats.min.js ></script>
 <img id=kepler src=images/art-scott-photo.jpg style=display:none; >
 <img id=brahe src=images/art-and-cindy.jpg style=display:none; >
@@ -31,7 +31,7 @@
 
 		var info = document.body.appendChild( document.createElement( 'div' ) );
 		info.style.cssText = 'left: 20px; position: absolute; top: 0px; width: 100% ';
-		info.innerHTML = '<h1>Art Scott Orbit Thingy</h1><div id=dataDiv>Use mouse to pan, zoom & rotate</div>';
+		info.innerHTML = '<h1><a href="" >Art Scott Orbit Thingy</h1><div id=dataDiv>Use mouse to pan, zoom & rotate</a></div>';
 
 		stats = new Stats();
 		stats.domElement.style.cssText = 'position: absolute; right: 0; top: 0; zIndex: 100; ';
@@ -64,7 +64,7 @@
 		light.shadowCameraNear = 100;
 		light.shadowCameraFar = 600;
 //	light.shadowCameraVisible = true;
-		scene.add( light );	
+		scene.add( light );
 
 
 // object 1
@@ -83,7 +83,7 @@
 		var pix = imgd.data;
 
 		geometry = new THREE.SphereGeometry( 100, 119, 120);
-		var verts = geometry.vertices, scale, vert
+		var verts = geometry.vertices; //, scale, vert
 		for (var i = 0, j = 0, len = pix.length; i < len; i += 4) {
 			scale = 1 + 0.0008 * ( pix[i] + pix[i + 1] + pix[i + 2] );
 			vert = verts[j++];
@@ -152,7 +152,7 @@
 		core2.receiveShadow = true;
 		core2.castShadow = true;
 		object2.add( core2 );
-		
+
 		object2.rotation.x -= 0.5;
 		scene.add( object2 );
 
